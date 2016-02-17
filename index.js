@@ -44,7 +44,7 @@ module.exports = function (qiniu, option) {
           return Q.nfcall(getEtag, file._contents)
             .then(function (fileHash) {
               // Skip when hash equal
-              if (stat.hash === fileHash) return false;
+              if (stat.hash === fileHash || option.override ) return false;
 
               // Start
               log('Start →', fileKey);
